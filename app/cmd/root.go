@@ -11,13 +11,14 @@ var rootCmd = &cobra.Command{
 	Use:   "codefresh-hello",
 	Short: "codefresh-hello is a test for GKE and Codefresh integration",
 	Run: func(cmd *cobra.Command, args []string) {
-		// Do Stuff Here
+		// Run help by default
+		cmd.Help()
 	},
 }
 
+// Execute runs root command
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
-		os.Exit(1)
+		fmt.Fprintf(os.Stderr, "Error executing command %s", err)
 	}
 }
